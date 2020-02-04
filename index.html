@@ -21,9 +21,9 @@
             <h1 class="title">Calculator</h1>
             <div class="calculator">
                 <div class="display__wrapper">
-                    <div id="smallDisplay">
+                    <div id="smallDisplay" class="smalldisplay">
                     </div>
-                    <span id="operator"></span>
+                    <span id="operator" class="operator"></span>
                     <div id="display" class="display">
                         
                     </div>
@@ -32,31 +32,32 @@
                 <div class="keypad__wrapper">
                     <div class="keypad">
                         <div class="row">
-                            <button id="c" class="key">c</button>
-                            <button id="ce" class="key">ce</button>
-                            <button id="-<" class="key"><-</button>
-                            <button id="+" class="key">+</button>
+                            <button id="c" class="key notInt">c</button>
+                            <button id="ce" class="key notInt">ce</button>
+                            <button id="<-" class="key notInt"><-</button>
+                            <button id="+" class="key notInt">+</button>
                         </div>
                         <div class="row">
                             <button id="7" class="key">7</button>
                             <button id="8" class="key">8</button>
                             <button id="9" class="key">9</button>
-                            <button id="-" class="key">-</button>
+                            <button id="-" class="key notInt">-</button>
                         </div>
                         <div class="row">
                             <button id="4" class="key">4</button>
                             <button id="5" class="key">5</button>
                             <button id="6" class="key">6</button>
-                            <button id="*" class="key">*</button>
+                            <button id="*" class="key notInt">*</button>
                         </div>
                         <div class="row">
                             <button id="1" class="key">1</button>
                             <button id="2" class="key">2</button>
                             <button id="3" class="key">3</button>
-                            <button id="/" class="key">/</button>
+                            <button id="/" class="key notInt">/</button>
                         </div>
                         <div class="row">
-                            <button id="=" class="key">=</button>
+                            <button id="0" class="key">0</button>
+                            <button id="=" class="key notInt equals">=</button>
                         </div>
                     </div>
                 </div>

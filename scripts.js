@@ -1,4 +1,17 @@
 /*
+Variables
+*/
+
+const keys = document.getElementsByClassName("key");
+var display = document.getElementById("display");
+var smallDisplay = document.getElementById("smallDisplay");
+var displayOperator = document.getElementById("operator");
+var firstValue = "";
+var result = "";
+var smallValue = "";
+var operator = "";
+
+/*
 Math functions
 */
 
@@ -31,31 +44,45 @@ function operate(x, y, z) {
     }
 }
 
+
 /*
 Display
 */
 
-const keys = document.getElementsByClassName("key");
-var display = document.getElementById("display");
-var smallDisplay = document.getElementById("smallDisplay");
-var displayOperator = document.getElementById("operator");
-var firstValue = "";
-var result = "";
-var smallValue = "";
-var operator = "";
+function resetBothDisplays() {
+    display.innerHTML = "";
+    smallDisplay.innerHTML = "";
+    firstValue = "";
+    displayOperator.innerHTML = "";
+}
 
+function resetDisplay() {
+    firstValue = "";
+    display.innerHTML = "";
+}
+
+function backspace(str) {
+    var strLength = str.length;
+    return str.substring(strLength - strLength, strLength - 1);
+}
+
+/*
+Assign on click event listener to each button that runs displayScreen() when clicked
+*/
 Array.from(keys).forEach(key => key.addEventListener("click", displayScreen));
 
 function displayScreen() {
 
-    /* TODO:
-    > Below switch statement half works, only need to add "small number" display to save the first value of the operation before operating on it
-    > Run operate() on values when the user presses the “=” key
+    /*
+    Takes user input assigns first value
     */
-
    firstValue += this.id;
    firstValue = firstValue.replace(/[^0-9]/g, "");
    display.innerHTML = firstValue;
+
+   /*
+   Checks if user specifies an operator, if they do, saves first value to small display
+   */
 
     if (this.id === "+" || this.id === "-" || this.id === "/" || this.id === "*") {
         smallValue = firstValue;
@@ -63,6 +90,10 @@ function displayScreen() {
         display.innerHTML = "";
         firstValue = "";
     }
+
+    /*
+    Assigns type of operation to be used in operate() function when equals is pressed
+    */
 
     switch(this.id) {
         case "+":
@@ -82,15 +113,26 @@ function displayScreen() {
             displayOperator.innerHTML = "*";
             return
         case "=":
-            display.innerHTML = operate(smallValue, firstValue, operator);
+            firstValue = operate(smallValue, firstValue, operator);
+            display.innerHTML = firstValue;
             smallDisplay.innerHTML = "";
             displayOperator.innerHTML = "";
-    
+            return
+        case "ce":
+            resetBothDisplays();
+            return
+        case "c":
+            resetDisplay();
+            return
+        case "<-":
+            firstValue = backspace(firstValue);
+            display.innerHTML = firstValue;
+            return
     }
 
 }
 
 /*
-User input
+TODO:
+Account for multiple operatiosn before pressing equals
 */
-

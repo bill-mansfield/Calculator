@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: center;
 }
-.calculator__wrapper .display__wrapper .display {
+.calculator__wrapper .display__wrapper .display, .calculator__wrapper .display__wrapper .smalldisplay, .calculator__wrapper .display__wrapper .operator {
   text-align: center;
   height: 100px;
   font-size: 36px;
@@ -34,6 +34,12 @@ body {
 }
 .calculator__wrapper .keypad__wrapper .keypad .key {
   background-color: mediumspringgreen;
+}
+.calculator__wrapper .keypad__wrapper .keypad .notInt {
+  background: cornflowerblue;
+}
+.calculator__wrapper .keypad__wrapper .keypad .equals {
+  width: 225px;
 }
 .calculator__wrapper .keypad__wrapper .keypad, .calculator__wrapper .keypad__wrapper .operators {
   flex-basis: 50%;
